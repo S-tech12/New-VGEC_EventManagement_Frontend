@@ -18,7 +18,7 @@ async function FillTable() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/getEventData", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/getEventData", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
