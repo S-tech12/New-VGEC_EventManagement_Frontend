@@ -5,7 +5,7 @@ deleteAccountButton.addEventListener("click", DeleteAccount);
 
 async function DeleteAccount() {
     try {
-        const response = await fetch("http://localhost:3000/DeleteAccountForHOD", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/DeleteAccountForHOD", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
