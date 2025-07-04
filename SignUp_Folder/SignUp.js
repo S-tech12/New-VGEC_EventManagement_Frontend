@@ -53,7 +53,7 @@ Signupbutton.addEventListener("click", async (e) => {
 
     // ✅ Step 1: Request OTP
     try {
-        const response = await fetch("http://localhost:3000/Signuproute", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/Signuproute", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Username, Userpassword1, Userfullname, Useremailid, Userrole })
@@ -110,7 +110,7 @@ Signupbutton.addEventListener("click", async (e) => {
         
             // ✅ Step 3: Verify OTP and Create Account
             try {
-                const otpResponse = await fetch("http://localhost:3000/verify-otp-signup", {
+                const otpResponse = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/verify-otp-signup", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email: Useremailid, enteredOtp })
