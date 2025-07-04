@@ -25,7 +25,7 @@ async function updateData() {
         return;
     }
     try {
-        const response = await fetch("http://localhost:3000/updateProfileData", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/updateProfileData", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
