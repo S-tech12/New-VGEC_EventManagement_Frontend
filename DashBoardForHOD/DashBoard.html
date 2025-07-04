@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- this is bootstrap css link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- this is bootstrap icon link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- this is the script which provides the modern alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- this is common css link -->
+    <link rel="stylesheet" href="DashBoard.css">
+    <link rel="stylesheet" href="DashBoardResponsivness.css">
+
+    <title>DashBoard for HOD</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" id="ProfileNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand h1" href="#" style="font-size: xx-large;">VGEC Fest Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex ms-auto">
+                    <a href="../Profile_page_for_HOD/Profile.html">
+                        <h2><i class="bi bi-person-lines-fill"></i>Profile</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Events Table -->
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4 class="card-title">Event Requests</h4>
+                        <p class="card-text">View and manage all event requests.</p>
+                    </div>
+                </div>
+                <table class="table table-striped mt-3">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Event Name</th>
+                            <th>Category</th>
+                            <th scope="col">
+                                <div class="d-flex flex-column align-items-center">
+                                    <span>Date</span>
+                                    <small class="form-text text-muted">Format: YYYY-MM-DD</small>
+                                </div>
+                            </th>
+                            <th>Event Location</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventTable">
+                        <!-- all the event will be here from GetEventDataForTable.js file -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- this is the modal to show the detailed information when user click on the details button which is in the table -->
+    <div class="modal fade" id="eventDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Content will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-6">
+                    <h5>About VGEC Fest Portal</h5>
+                    <p>Your one-stop destination for all college events at VGEC. Stay updated with academic, cultural,
+                        technical, sports, and fun activities.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>Email: VGECTechFest@vgecfest.com </p>
+                    <p>Phone: +91 12345 67890</p>
+                    <p>Location: VGEC, Ahmedabad, India</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/14kzJBuoms/" class="text-light me-3" target="_blank"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/smit_pipalva_2004?igsh=ZGg2Nnh2NjRvZ2Fo"
+                            class="text-light me-3" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/S-tech12" class="text-light" target="_blank"><i
+                                class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-2">
+                <p class="mb-0">&copy; 2025 VGEC Fest Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Instruction Modal -->
+    <div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionModalLabel">Instructions</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome! Please read the instructions carefully before proceeding.</p>
+                    <ul>
+                        <li><strong>Approve events at least <u>5 days in advance</u>.</strong></li>
+                        <li><strong>Review all event details carefully</strong> before clicking <b>Approve</b> or
+                            <b>Reject</b>. Once the action is taken, it cannot be changed.
+                        </li>
+                        <li><span
+                                style="background-color:#8B0000; color:white; padding:2px 6px; border-radius:4px;">Dark
+                                Red</span> row indicates the event <b>cannot</b> be approved (less than 5 days
+                            remaining).</li>
+                        <li><span style="background-color:#f8d7da; padding:2px 6px; border-radius:4px;">Light Red</span>
+                            row means you have very limited time left to approve.</li>
+                        <li><span
+                                style="background-color:white; padding:2px 6px; border:1px solid #ccc; border-radius:4px;">White</span>
+                            row means the event is within a safe approval window.</li>
+
+                        <li><b>Once an event is approved or rejected</b>, you <b>cannot update</b> it.</li>
+                        ` <li>You can view the <b>Participants File</b> for <b>Completed Events</b> in the <b>Profile
+                                Page</b>.</li>
+                        <li><b>If you try to delete your account</b> and there are <b>Pending Events</b>, the Event
+                            Hosters will be <b>notified via email</b>, and <b>Rejected Events</b> will be <b>permanently
+                                deleted</b>.</li>
+                        <li><b>If there are Approved but Upcoming Events</b>, you <b>cannot delete your account</b>
+                            until those events are marked as <b>Completed</b>.</li>
+
+                        <li><b>Note:</b> Once you click the <b>OK</b> button, this instruction set will not appear
+                            again and you can still see in the profile page.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="acknowledgeInstructions">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="(1)GetEventDataForTable.js"></script>
+</body>
+
+</html>

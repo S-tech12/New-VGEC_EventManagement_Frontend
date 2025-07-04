@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="ProfileResponsivness.css">
+
+    <!-- this is the script which provides the modern alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Profile page for HOD</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" id="ProfileNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand h1" href="#" style="font-size: xx-large;">VGEC Fest Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card mb-3" id="UserBox">
+            <div class="row g-0">
+                <div class="col-md-4" id="imageOfUser">
+                    <img src="../Profile_Picture/user_Profile.jpg" alt="User Profile Page" data-bs-toggle="modal"
+                        data-bs-target="#ImageOfUserModal" role="button" id="userImage">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" id="Username">User Name</h5>
+                        <p class="card-text" id="UserData"></p>
+                        <p class="card-text"><small class="text-muted" id="UsercreatedDate"></small></p>
+                        <p class="card-text"><small class="text-muted" id="UserupdatedDate"></small></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#editProfileModal" id="editProfileButton">
+                            Edit Profile
+                        </button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#deleteAccountModal">
+                            Delete Account
+                        </button>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal">
+                            Log Out
+                        </button>
+                        <a href="../DashBoardForHOD/DashBoard.html"><button type="button"
+                                class="btn btn-primary">Back</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Approved Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Approved Events</h4>
+                <p class="card-text" id="NoOfEvent">Below is the list of events approved by this admin.</p>
+                <table class="table table-striped" id="ApprovedTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" style="display: flex; justify-content:space-evenly;">
+                                Date
+                                <div id="emailHelp" class="form-text">Format: YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Info</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Rejected Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Rejected Events</h4>
+                <p class="card-text">Below is the list of events rejected by this admin.</p>
+                <table class="table table-striped" id="RejectedTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" style="display: flex; justify-content:space-evenly;">
+                                Date
+                                <div id="emailHelp" class="form-text">Format: YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Info</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Done Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body" id="pdfContent">
+                <h4 class="card-title">Done Events</h4>
+                <p class="card-text">Below is the list of events that have been successfully completed.</p>
+                <table class="table table-striped" id="DoneEventsTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Info</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- content will be come from (9)DoneEvents.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card mb-3" id="UserBox">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <h4 class="card-title">Instructions for HOD Approval Panel</h4>
+                        <p class="card-text">Welcome! Please follow these guidelines before approving or rejecting events:</p>
+                        <ul>
+                            <li><strong>Approve events at least <u>5 days before</u> the scheduled event date.</strong></li>
+                            <li><strong>Double-check all event details</strong> (title, date, time, venue, fees, etc.)before clicking <b>Approve</b> or <b>Reject</b>. Once action is taken, it <b>cannot be changed</b>.</li>
+                            <li>Event rows are <strong>color-coded</strong> to help you identify urgency:
+                                <ul>
+                                    <li><span style="background-color:#8B0000; color:white; padding:2px 6px; border-radius:4px;">Dark Red</span> – Cannot approve (less than 5 days remaining).</li>
+                                    <li><span style="background-color:#f8d7da; padding:2px 6px; border-radius:4px;">Light Red</span> – Limited time left to approve.</li>
+                                    <li><span style="background-color:white; padding:2px 6px; border:1px solid #ccc; border-radius:4px;">White</span> – Within safe approval window.</li>
+                                </ul>
+                            </li>
+                            <li>Once an event is <b>Approved</b> or <b>Rejected</b>, it <b>cannot be updated</b> or modified.</li>
+                            <li>After event completion, you can download the <strong>Participants File</strong> from your <b>Profile Page</b>.</li>
+                            <li>If you attempt to <b>delete your account</b> while events are still in the <b>Pending</b> state:
+                                <ul>
+                                    <li>All event hosters will be <strong>notified via email</strong>.</li>
+                                    <li><strong>Rejected Events</strong> will be <b>permanently deleted</b>.</li>
+                                </ul>
+                            </li>
+                            <li>If there are <b>Approved but Upcoming Events</b>, you <b>cannot delete your account</b> until those events are marked as <b>Completed</b>.</li>
+                            <li>Ensure fairness and responsibility when approving events. Your action impacts participant enrollment and payment flow.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="container mb-3">
+        <div id="UserBox">
+            <h4 class="mb-4 text-center">💬 Have a Question? Contact Us</h4>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="QuerySenderMail" class="form-label">Your Email-Id: </label>
+                    <input type="text" class="form-control" id="QuerySenderMail" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="QuerySubject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="QuerySubject" placeholder="Enter your subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="QueryMessage" class="form-label">Message</label>
+                    <textarea class="form-control" id="QueryMessage" rows="5" placeholder="Type your message here..."
+                        required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-primary" id="QueryButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-6">
+                    <h5>About VGEC Fest Portal</h5>
+                    <p>Your one-stop destination for all college events at VGEC. Stay updated with academic, cultural,
+                        technical, sports, and fun activities.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>Email: VGECTechFest@vgecfest.com </p>
+                    <p>Phone: +91 12345 67890</p>
+                    <p>Location: VGEC, Ahmedabad, India</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/14kzJBuoms/" class="text-light me-3" target="_blank"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/smit_pipalva_2004?igsh=ZGg2Nnh2NjRvZ2Fo"
+                            class="text-light me-3" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/S-tech12" class="text-light" target="_blank"><i
+                                class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-2">
+                <p class="mb-0">&copy; 2025 VGEC Fest Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="closeModalButton"></button>
+                </div>
+
+                <!-- Modal Body (Form) -->
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="editFullName" class="form-label">Full Name:</label>
+                            <input type="text" class="form-control" id="editFullName"
+                                placeholder="Enter your full name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email address:</label>
+                            <input type="email" class="form-control" id="editEmail" placeholder="Enter your email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editUsername" class="form-label">Username:</label>
+                            <input type="text" class="form-control" id="editUsername" placeholder="Enter your username">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editPassword" class="form-label">New Password:</label>
+                            <input type="password" class="form-control" id="editPassword"
+                                placeholder="Enter new password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmEditPassword" class="form-label">Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirmEditPassword"
+                                placeholder="Confirm new password">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="SaveChangesButton">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Delete Account Modal -->
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteAccountLabel">Delete Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your account?</p>
+                    <p class="text-danger"><small>This action cannot be undone.</small></p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="deleteAccountModalCancelButton">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="deleteAccountButton">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log Out Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Log Out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>Are you sure you want to log out?</p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="LogoutModalCloseButton">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="LogoutButton">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- update profile image Modal -->
+    <div class="modal fade" id="ImageOfUserModal" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Update Profile Image">Update the Profile Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="UpdateImageModalCloseButton"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="UpdateImageBox">
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="UpdateImageButton">Update Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- this is the modal to show the detailed information when user click on the details button which is in the table -->
+    <div class="modal fade" id="eventDetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Event Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Content will be injected here from (5)ApprovedEvent.js and (6)RejectedEvent.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="(1)ProfileForHod.js"></script>
+    <script src="(2)UpdateProfile.js"></script>
+    <script src="(3)DeleteAccount.js"></script>
+    <script src="(4)Logout.js"></script>
+    <script src="(5)ApprovedEvent.js"></script>
+    <script src="(6)RejectedEvent.js"></script>
+    <script src="(7)Query.js"></script>
+    <script src="(8)ProfilePicture.js"></script>
+    <script src="(9)DoneEvents.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

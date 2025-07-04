@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="DashBoard.css">
+
+    <!-- this is the script which provides the modern alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>DashBoard for Student</title>
+
+    <!-- Razorpay checkout script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" id="ProfileNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand h1" href="#" style="font-size: xx-large;">VGEC Fest Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex ms-auto">
+                    <a href="../Profile_page_For_student/Profile.html">
+                        <h2><i class="bi bi-person-lines-fill"></i>Profile</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" id="eventCardsContainer">
+        <!-- <div class="card" style="width: 18rem;" data-bs-toggle="modal" data-bs-target="#eventDetailModal">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Art and Craft">
+            <div class="card-body">
+                <h5 class="card-title">Art & Craft</h5>
+                <p class="card-text">
+                    Unleash your creativity! Participate in painting, sketching, and DIY craft workshops to showcase
+                    your artistic skills.
+                </p>
+                <a href="#" class="btn btn-primary">Join Now</a>
+            </div>
+            <div class="card-footer">
+                <div id="MoreDetail" class="form-text">Click on the box to get more Details and Payment.</div>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Athletics">
+            <div class="card-body">
+                <h5 class="card-title">Athletics</h5>
+                <p class="card-text">
+                    Get ready to run, jump, and compete! Participate in track and field events to showcase your physical
+                    strength and stamina.
+                </p>
+                <a href="#" class="btn btn-danger">Register Now</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Dance">
+            <div class="card-body">
+                <h5 class="card-title">Dance Competition</h5>
+                <p class="card-text">
+                    Express yourself through movement! Join solo and group dance performances across various styles and
+                    themes.
+                </p>
+                <a href="#" class="btn btn-warning">Show Your Moves</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Drama">
+            <div class="card-body">
+                <h5 class="card-title">Drama & Theatre</h5>
+                <p class="card-text">
+                    Step into the spotlight! Perform in stage plays, skits, and mono-acts to showcase your acting skills
+                    and storytelling.
+                </p>
+                <a href="#" class="btn btn-secondary">Be a Star</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Environmental Awareness">
+            <div class="card-body">
+                <h5 class="card-title">Environmental Awareness</h5>
+                <p class="card-text">
+                    Join us in making a difference! Participate in eco-friendly initiatives,
+                    plantation drives, and sustainability workshops to promote a greener future.
+                </p>
+                <a href="#" class="btn btn-success">Learn More</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Gaming">
+            <div class="card-body">
+                <h5 class="card-title">E-Sports & Gaming</h5>
+                <p class="card-text">
+                    Show off your gaming skills in tournaments featuring top games like FIFA, PUBG, and Valorant.
+                </p>
+                <a href="#" class="btn btn-dark">Game On</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Hackathon">
+            <div class="card-body">
+                <h5 class="card-title">Hackathon</h5>
+                <p class="card-text">
+                    Build, innovate, and code your way to victory! Participate in problem-solving challenges and coding
+                    marathons.
+                </p>
+                <a href="#" class="btn btn-info">Compete Now</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="../DashBoardForEventHoster/default_posters/art_and_craft.jpg" alt="Inter-College Sports">
+            <div class="card-body">
+                <h5 class="card-title">Inter-College Sports</h5>
+                <p class="card-text">
+                    Represent your college in various sports events including football, cricket, basketball, and more.
+                </p>
+                <a href="#" class="btn btn-danger">Register Now</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="pics/music and bands.jpg" alt="Music and Bands">
+            <div class="card-body">
+                <h5 class="card-title">Music & Bands</h5>
+                <p class="card-text">
+                    Let the rhythm flow! Participate in solo or band performances and mesmerize the audience with your
+                    music.
+                </p>
+                <a href="#" class="btn btn-primary">Perform Now</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="pics/quiz.jpg" alt="Quiz Competition">
+            <div class="card-body">
+                <h5 class="card-title">Quiz Competition</h5>
+                <p class="card-text">
+                    Test your knowledge! Participate in a thrilling quiz battle covering multiple domains.
+                </p>
+                <a href="#" class="btn btn-warning">Join the Quiz</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="pics/Seminar.jpg" alt="Seminar">
+            <div class="card-body">
+                <h5 class="card-title">Seminars & Workshops</h5>
+                <p class="card-text">
+                    Expand your knowledge! Attend expert-led sessions on technology, innovation, and industry trends.
+                </p>
+                <a href="#" class="btn btn-info">Attend Now</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="pics/Sing.jpg" alt="Singing Competition">
+            <div class="card-body">
+                <h5 class="card-title">Singing Competition</h5>
+                <p class="card-text">
+                    Showcase your voice! Participate in solo or group singing competitions and impress the audience.
+                </p>
+                <a href="#" class="btn btn-primary">Sing Your Heart Out</a>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="modal fade" id="eventDetailModal" tabindex="-1" aria-labelledby="eventDetailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="eventDetailModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="CloseButtonForDetailModal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Content will be injected here from (2)GetEventData.js -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instruction Modal -->
+    <div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg"> <!-- Wider modal -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionModalLabel">Instructions</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome! Please read the instructions carefully before proceeding.</p>
+
+                    <!-- Event Hoster Instructions -->
+                    <h6><b>For Event Hosts:</b></h6>
+                    <ul>
+                        <li>Submit your event proposal at least <strong>15 days before</strong> the scheduled event
+                            date.</li>
+                        <li>Ensure that all event details (title, date, venue, and description) are accurate and
+                            complete.</li>
+                        <li>Once submitted, the event will be reviewed by the HOD. You cannot edit the event details
+                            after submission.</li>
+                        <li>Keep track of your event status (Pending, Approved, Rejected) through your dashboard.</li>
+                        <li>You will receive a notification once your event is approved or rejected.</li>
+                        <li>If rejected, you may resubmit a corrected version if time permits.</li>
+                        <li>If event is <b>Approved</b> and <b>Not Completed</b>, you <b>cannot delete</b> the event or
+                            your account.</li>
+                        <li>If your event is still <b>Pending</b> and the <b>HOD deletes their account</b>, your event
+                            will also be deleted and you will be <b>notified via email</b>.</li>
+                        <li>Once an event is <b>added</b>, it <b>cannot be updated</b>. So <b>verify everything</b>
+                            before submitting.</li>
+                        <li>You can only <b>Add</b> and <b>Delete</b> events, not <b>Approve</b> or <b>Update</b> them.
+                        </li>
+                        <li>If you have <b>Paid</b> for the event, you must <b>collect fees manually</b>; there is <b>no
+                                online method</b>.</li>
+                        <li><b>Students can enroll</b> in your event <b>before the event day</b>; enrollment is <b>not
+                                allowed on the event day</b>.</li>
+                        <li>You can <b>Download</b> the participants file from your <b>Profile Page</b>.</li>
+                        <li>For your event, <b>Students</b> can generate their <b>Certificates</b>. A <b>Sample</b> is
+                            provided.</li>
+                        <li>You can read <b>FAQs</b> in the <b>Profile Page</b> also.</li>
+                    </ul>
+
+                    <!-- Student Instructions -->
+                    <h6><b>For Students:</b></h6>
+                    <ul>
+                        <li>Each event card will show a badge indicating whether the event is <b>Paid</b> or
+                            <b>Free</b>.</li>
+                        <li>If you enroll in a <b>Paid Event</b>, you must give the specified amount directly to the
+                            event host on the event day.</li>
+                        <li>If you enroll in a <b>Free Event</b> or <b>Paid Event</b> but <b>do not attend</b>, your
+                            account will be <b>blocked</b>.</li>
+                        <li>You can generate certificates only after the event is marked as <b>Completed</b>.</li>
+                        <li>Read the event details and ensure you are eligible before enrolling.</li>
+                        <li>Enrollment is allowed only before the event day.</li>
+                    </ul>
+
+                    <p><b>Note:</b> Once you click the <b>OK</b> button, this instruction set will not appear again. You
+                        can still read it in the Profile Page.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="acknowledgeInstructions">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-6">
+                    <h5>About VGEC Fest Portal</h5>
+                    <p>Your one-stop destination for all college events at VGEC. Stay updated with academic, cultural,
+                        technical, sports, and fun activities.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>Email: VGECTechFest@vgecfest.com </p>
+                    <p>Phone: +91 12345 67890</p>
+                    <p>Location: VGEC, Ahmedabad, India</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/14kzJBuoms/" class="text-light me-3" target="_blank"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/smit_pipalva_2004?igsh=ZGg2Nnh2NjRvZ2Fo"
+                            class="text-light me-3" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/S-tech12" class="text-light" target="_blank"><i
+                                class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-2">
+                <p class="mb-0">&copy; 2025 VGEC Fest Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="(1)WarnToEnterContact&Branch.js"></script>
+    <script src="(2)GetEventData.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

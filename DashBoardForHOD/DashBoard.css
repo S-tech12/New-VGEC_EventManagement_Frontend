@@ -1,0 +1,25 @@
+body{
+    height: 100vh;
+    overflow: auto;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.d-flex{
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.container{
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.card{
+    box-shadow: 2px 4px 20px black;
+    border-radius: 15px;
+}
+

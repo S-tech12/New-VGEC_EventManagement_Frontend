@@ -1,0 +1,56 @@
+/* Default (large screens) */
+@media screen and (min-width: 1000px) {
+    .container {
+        width: 50%;
+    }
+    input, select {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Medium screens */
+@media screen and (max-width: 768px) {
+    input, select , .form-select {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Small screens (≤424px) */
+@media screen and (max-width: 424px) {
+    #BottomOfLogin , #DontHaveLine2 {
+        font-size: large;
+    }
+
+    .form-label {
+        font-size: small;
+    }
+
+    input, select , .form-select {
+        font-size: 13px;
+        padding: 6px;
+    }
+}
+
+/* Very small screens (≤376px) */
+@media screen and (max-width: 376px) {
+    #BottomOfLogin , #DontHaveLine2 {
+        font-size: small;
+    }
+
+    #Loginbutton {
+        font-size: small;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .form-label {
+        font-size: small;
+    }
+
+    input, select , .form-select {
+        font-size: 12px;
+        padding: 5px;
+    }
+}

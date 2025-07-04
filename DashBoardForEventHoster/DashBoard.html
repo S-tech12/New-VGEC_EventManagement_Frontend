@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="DashBoard.css">
+    <link rel="stylesheet" href="DashBoardResponsivness.css">
+    <!-- this is the script which provides the modern alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <title>DashBoard for Event Hoster</title>
+</head>
+
+<body>
+    <!-- this is the circle fill icon which we have used in the alert -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+            <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.97 11.03a.75.75 0 0 0 1.08 0l3.992-3.992a.75.75 0 1 0-1.08-1.08L7.5 9.439 5.53 7.47a.75.75 0 0 0-1.06 1.06l2.5 2.5z" />
+        </symbol>
+    </svg>
+
+
+    <!-- this is the navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" id="ProfileNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand h1" href="#" style="font-size: xx-large;">VGEC Fest Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="d-flex ms-auto">
+                    <a href="../Profile_page_for_EventHoster/Profile.html">
+                        <h2><i class="bi bi-person-lines-fill"></i>Profile</h2>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <!-- this is the main container in which the there is the button to host the new event and all the event will be listed here   -->
+    <div class="container">
+        <!-- Hosted Events Section -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Hosted Events</h4>
+                <p class="card-text" id="NoOfEvent"></p>
+
+                <div>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#hostEventModal">Host New Event</button>
+                </div>
+
+                <!-- Hosted Events Table -->
+                <table class="table table-striped mt-3" id="EventTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">
+                                Date
+                                <div id="emailHelp" class="form-text"> Format: YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Completion Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- all the data will be fetched here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Host Event Modal -->
+    <div class="modal fade" id="hostEventModal" tabindex="-1" aria-labelledby="hostEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hostEventModalLabel">Host a New Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="hostEventForm">
+                        <div class="mb-3">
+                            <label for="eventName" class="form-label">Event Name <span
+                                    class="required-mark">*</span></label>
+                            <input type="text" class="form-control" id="eventName" placeholder="Event Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="organizerEmail" class="form-label">Organizer Email</label>
+                            <input type="email" class="form-control" id="organizerEmail" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="enrollment" class="form-label">Enrollment Number</label>
+                            <input type="text" class="form-control" id="enrollment" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactNumber" class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" id="contactNumber" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="branch" class="form-label">Your Branch</label>
+                            <input type="text" class="form-control" id="branch" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventType" class="form-label">Event Type <span
+                                    class="required-mark">*</span></label>
+                            <select class="form-control" id="eventType" required>
+                                <option value="#">Select Type</option>
+                                <option value="art_and_craft">Art and Craft</option>
+                                <option value="athletics">Athletics</option>
+                                <option value="dance">Dance</option>
+                                <option value="Drama">Drama</option>
+                                <option value="environmentals">Environmentals</option>
+                                <option value="gaming">Gaming</option>
+                                <option value="Hackathon">Hackathon</option>
+                                <option value="image">Image</option>
+                                <option value="music_and_bands">Music and Bands</option>
+                                <option value="quiz">Quiz</option>
+                                <option value="Seminar">Seminar</option>
+                                <option value="Sing">Sing</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventPoster" class="form-label">Event Poster (Preferred size: 1500 x
+                                1000px)</label>
+                            <input type="file" id="eventPoster" name="eventPoster" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Event Fees <span class="required-mark">*</span></label>
+                            <select class="form-control" id="eventFees" required>
+                                <option value="#">Select the Event fees</option>
+                                <option value="Free">Non-Paid</option>
+                                <option value="Paid">Paid</option>
+                            </select>
+                        </div>
+                        <!-- this div will come dynamically from the script tag at the end of the body -->
+                        <div class="mb-3 d-none" id="feesPerPersonGroup">
+                            <label for="feesPerPerson" class="form-label">Fees Per Person (in ₹)</label>
+                            <input type="number" class="form-control" id="feesPerPerson"
+                                placeholder="Enter amount per person" min="1">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="budget" class="form-label">Event Budget</label>
+                            <input type="text" class="form-control" id="budget" required>
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="eventDescription" class="form-label">Event Description <span
+                                    class="required-mark">*</span></label>
+                            <textarea class="form-control" id="eventDescription" rows="3"
+                                placeholder="Event Description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDate" class="form-label">Event Date <span
+                                    class="required-mark">*</span></label>
+                            <input type="date" class="form-control" id="eventDate" placeholder="Event Date" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="startTime" class="form-label">From Time</label>
+                            <input type="time" class="form-control" id="startTime" name="startTime" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="endTime" class="form-label">To Time</label>
+                            <input type="time" class="form-control" id="endTime" name="endTime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location <span
+                                    class="required-mark">*</span></label>
+                            <select class="form-control" id="location" required>
+                                <option value="#">Select the Block</option>
+                                <option value="A-Block">A-Block</option>
+                                <option value="B-Block">B-Block</option>
+                                <option value="C-Block">C-Block</option>
+                                <option value="D-Block">D-Block</option>
+                                <option value="E-Block">E-Block (GYMKHANA)</option>
+                                <option value="F-Block">F-Block</option>
+                                <option value="G-Block">G-Block</option>
+                                <option value="H-Block">H-Block</option>
+                                <option value="I-Block">I-Block</option>
+                                <option value="J-Block">J-Block</option>
+                                <option value="K-Block">K-Block</option>
+                                <option value="L-Block">L-Block</option>
+                                <option value="M-Block">M-Block</option>
+                                <option value="N-Block">N-Block</option>
+                                <option value="O-Block">O-Block</option>
+                                <option value="P-Block">P-Block</option>
+                                <option value="Q-Block">Q-Block</option>
+                                <option value="F-Block Ground">F-Block Ground</option>
+                                <option value="M-Block Ground">M-Block Ground</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hodEmail" class="form-label">HOD’s Permission Email <span
+                                    class="required-mark">*</span></label>
+                            <select class="form-control" id="hodEmail" required>
+                                <option value="#">Select the HOD's Email-id</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" id="NewEventRequestButton">Request
+                                Hosting</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                id="HostNewEventCloseButton">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Instruction Modal -->
+    <div class="modal fade" id="instructionModal" tabindex="-1" aria-labelledby="instructionModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instructionModalLabel">Instructions</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Welcome! Please read the instructions carefully before proceeding.</p>
+                    <ul>
+                        <li>Submit your event proposal at least <strong>15 days before</strong> the scheduled event date.</li>
+                        <li>Ensure that all event details (title, date, venue, and description) are accurate and complete.</li>
+                        <li>Once submitted, the event will be reviewed by the HOD. You cannot edit the event details after submission.</li>
+                        <li>Keep track of your event status (Pending, Approved, Rejected) through your dashboard.</li>
+                        <li>You will receive a notification once your event is approved or rejected.</li>
+                        <li>If rejected, you may resubmit a corrected version if time permits.</li>
+                        <li>If event is <b>Approved</b> and <b>Not Completed</b>, you <b>cannot delete</b> the event or your account.</li>
+                        <li>If your event is still <b>Pending</b> and the <b>HOD deletes their account</b>, your event will also be deleted and you will be <b>notified via email</b>.</li>
+                        <li>If any incident occurs during your event and the responsible student deletes their account, the <b>participant file will be considered proof</b>, so <b>maintaining it is your responsibility</b>.</li>
+                        <li>Once an event is <b>added</b>, it <b>cannot be updated</b>. So <b>verify everything</b> before submitting.</li>
+                        <li>You can only <b>Add</b> and <b>Delete</b> events, not <b>Approve</b> or <b>Update</b> them.</li>
+                        <li>If you have <b>Paid</b> for the event, you must <b>collect fees manually</b>; there is <b>no online method</b>.</li>
+                        <li><b>Students can enroll</b> in your event <b>before the event day</b>; enrollment is <b>not allowed on the event day</b>.</li>
+                        <li>You can <b>Download</b> the participants file from your <b>Profile Page</b>.</li>
+                        <li>For your event, <b>Students</b> can generate their <b>Certificates</b>. A <b>Sample</b> is provided.</li>
+                        <li>You can read <b>FAQs</b> in the <b>Profile Page</b> also.</li>
+                        <li><b>Note:</b> Once you click the <b>OK</b> button, this instruction set will not appear again and you can still see in the profile page.</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="acknowledgeInstructions">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-6">
+                    <h5>About VGEC Fest Portal</h5>
+                    <p>Your one-stop destination for all college events at VGEC. Stay updated with academic, cultural,
+                        technical, sports, and fun activities.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>Email: VGECTechFest@vgecfest.com </p>
+                    <p>Phone: +91 12345 67890</p>
+                    <p>Location: VGEC, Ahmedabad, India</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/14kzJBuoms/" class="text-light me-3" target="_blank"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/smit_pipalva_2004?igsh=ZGg2Nnh2NjRvZ2Fo"
+                            class="text-light me-3" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/S-tech12" class="text-light" target="_blank"><i
+                                class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-2">
+                <p class="mb-0">&copy; 2025 VGEC Fest Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const eventFeesSelect = document.getElementById("eventFees");
+            const feesPerPersonGroup = document.getElementById("feesPerPersonGroup");
+
+            eventFeesSelect.addEventListener("change", function () {
+                if (this.value === "Paid") {
+                    feesPerPersonGroup.classList.remove("d-none");
+                    document.getElementById("feesPerPerson").setAttribute("required", true);
+                } else {
+                    feesPerPersonGroup.classList.add("d-none");
+                    document.getElementById("feesPerPerson").removeAttribute("required");
+                }
+            });
+        });
+    </script>
+
+
+    <script src="(1)AddNewEvent.js"></script>
+    <script src="(2)ListAllEventDashboard.js"></script>
+    <script src="(3)GetUserData.js"></script>
+    <script src="(4)GetHODEmail.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: auto;
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.container{
+    padding: 3rem;
+    box-shadow: 4px 5px 25px black;
+    border-radius: 35px;
+}
+
+#LoginText{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.text-center span{
+    text-decoration: none;
+    color: blue;
+}
+a{
+    text-decoration: none;
+}

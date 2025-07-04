@@ -1,0 +1,44 @@
+@media screen and (max-width:768px) {
+    #FirstIcon{
+        font-size: 45px;
+    }
+    #SecondIcon{
+        font-size: 45px;
+    }
+    .texts h1{
+        font-size: 25px;
+    }
+    .texts p{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:462px) {
+    #FirstIcon{
+        font-size: 30px;
+    }
+    #SecondIcon{
+        font-size: 30px;
+    }
+    .texts h1{
+        font-size: 20px;
+    }
+    .texts p{
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width:370px) {
+    #FirstIcon{
+        font-size: 15px;
+    }
+    #SecondIcon{
+        font-size: 15px;
+    }
+    .texts h1{
+        font-size: 10px;
+    }
+    .texts p{
+        font-size: 5px;
+    }
+}

@@ -1,0 +1,43 @@
+@keyframes DownToUp{
+    from{
+        opacity: 0;
+        transform: translateY(400%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes RightToLeft{
+    from{
+        opacity: 0;
+        transform: translateX(400%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes LeftToRight{
+    from{
+        opacity: 0;
+        transform: translateX(-400%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes remove{
+    from{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    to{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}

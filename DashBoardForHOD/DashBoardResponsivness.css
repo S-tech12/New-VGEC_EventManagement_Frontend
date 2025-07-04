@@ -1,0 +1,150 @@
+/* ===== BASE STYLES ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container,
+.card,
+.modal-content {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ===== TABLE STYLING ===== */
+table.table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    text-align: center;
+    vertical-align: middle;
+    word-break: break-word;
+    padding: 12px;
+}
+
+thead th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Ensure Date column doesn't break layout */
+thead th:nth-child(4) {
+    min-width: 120px;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    font-size: 1rem;
+    padding: 8px 14px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+/* ===== FOOTER ===== */
+footer h5 {
+    font-size: 1.1rem;
+}
+
+footer p,
+footer a {
+    font-size: 0.95rem;
+}
+
+/* ====== RESPONSIVENESS ====== */
+
+/* Large Screens (≥1000px) */
+@media screen and (min-width: 1000px) {
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    h2 i {
+        font-size: 1.6rem;
+    }
+}
+
+/* Medium Screens (768px – 999px) */
+@media screen and (max-width: 999px) and (min-width: 768px) {
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-text,
+    .btn {
+        font-size: 0.95rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Screens (≤767px) */
+@media screen and (max-width: 767px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .card-title {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        width: auto;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Stack columns and scroll table */
+    .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    footer h5 {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+
+    .social-icons a i {
+        font-size: 1.2rem;
+    }
+}
+
+/* Very Small Screens (≤375px) */
+@media screen and (max-width: 375px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.8rem;
+    }
+
+    .form-text {
+        font-size: 0.75rem;
+    }
+}

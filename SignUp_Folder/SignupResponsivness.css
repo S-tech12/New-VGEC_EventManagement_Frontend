@@ -1,0 +1,93 @@
+/* Common styles for all screen sizes */
+#Userrole,
+#Username,
+#Userpassword1 {
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Large screens (≥1000px) */
+@media screen and (min-width: 1000px) {
+    .container {
+        width: 50%;
+    }
+
+    #Userrole,
+    #Username,
+    #Userpassword1 {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #Loginbutton {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+/* Medium screens (tablets and small laptops) */
+@media screen and (max-width: 999px) and (min-width: 425px) {
+    #Userrole,
+    #Username,
+    #Userpassword1 {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .form-label {
+        font-size: medium;
+    }
+
+    #Loginbutton {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Small screens (phones ≤424px) */
+@media screen and (max-width: 424px) {
+    #BottomOfLogin {
+        font-size: large;
+    }
+
+    .form-label {
+        font-size: small;
+    }
+
+    #Userrole,
+    #Username,
+    #Userpassword1 {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    #Loginbutton {
+        font-size: 13px;
+        padding: 6px 14px;
+    }
+}
+
+/* Very small screens (≤376px) */
+@media screen and (max-width: 376px) {
+    #BottomOfLogin {
+        font-size: small;
+    }
+
+    .form-label {
+        font-size: small;
+    }
+
+    #Userrole,
+    #Username,
+    #Userpassword1 {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    #Loginbutton {
+        font-size: small;
+        height: 30px;
+        margin-bottom: 10px;
+    }
+}

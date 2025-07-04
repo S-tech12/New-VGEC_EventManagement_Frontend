@@ -1,0 +1,158 @@
+/* ========== Base Styles ========== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container,
+.modal-content,
+.card {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ========== Hosted Events Section ========== */
+#UserBox .card-title {
+    font-size: 1.5rem;
+}
+
+/* Hosted Events Table */
+#EventTable {
+    overflow-x: auto;
+    display: block;
+}
+
+/* ========== Modal Form Elements ========== */
+#hostEventModal .form-label {
+    font-size: 1rem;
+}
+
+#hostEventModal input,
+#hostEventModal select,
+#hostEventModal textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ========== Buttons ========== */
+.btn {
+    font-size: 1rem;
+    padding: 10px 16px;
+    width: auto;
+}
+
+/* ========== Footer ========== */
+footer h5 {
+    font-size: 1.2rem;
+}
+
+footer p, footer a {
+    font-size: 0.95rem;
+}
+
+/* ========== Responsive Layout ========== */
+
+/* Large Screens (≥1000px) */
+@media screen and (min-width: 1000px) {
+    #UserBox{
+        width: fit-content;
+    }
+    .modal-dialog.modal-lg {
+        max-width: 900px;
+    }
+
+    .navbar-brand {
+        font-size: 2rem;
+    }
+
+    h2 i {
+        font-size: 1.6rem;
+    }
+}
+
+/* Medium Screens (Tablets, ≤999px) */
+@media screen and (max-width: 999px) {
+    #UserBox .card-title {
+        font-size: 1.3rem;
+    }
+
+    #EventTable thead th,
+    #EventTable tbody td {
+        font-size: 0.9rem;
+    }
+
+    #hostEventModal .modal-dialog {
+        max-width: 95%;
+    }
+
+    footer h5 {
+        font-size: 1.1rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    h2 i {
+        font-size: 1.3rem;
+    }
+}
+
+/* On small screens, allow horizontal scroll */
+@media screen and (max-width: 768px) {
+    #EventTable {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Small Screens (Phones, ≤576px) */
+@media screen and (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    .modal-footer .btn {
+        width: 48%;
+    }
+
+    #hostEventModal .form-label {
+        font-size: 0.9rem;
+    }
+
+    #hostEventModal input,
+    #hostEventModal select,
+    #hostEventModal textarea {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
+
+    footer h5 {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+
+    .social-icons a i {
+        font-size: 1.2rem;
+    }
+}

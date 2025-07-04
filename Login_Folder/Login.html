@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="Login.css">
+    <!-- <link rel="stylesheet" href="../Responsive_Folder/Login&SignUpResponsive.css"> -->
+    <link rel="stylesheet" href="../Animation_Code.css">
+    <link rel="stylesheet" href="Login_Responsiveness.css">
+
+    <!-- this is the script which provides the modern alert -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+    
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center" id="LoginText">
+            Login
+        </h1>
+        <form>
+            <div class="mb-3">
+                <label for="Userrole" class="form-label">Choose Role:</label>
+                <select class="form-select" aria-label="Default select example" id="Userrole">
+                    <option value="#" selected>Choose Role</option>
+                    <option value="Student">Student</option>
+                    <option value="Event Hoster">Event Hoster</option>
+                    <option value="HOD">HOD</option>
+                </select>
+                <br>
+            </div>
+            <div class="mb-3">
+                <label for="Username" class="form-label">UserName:</label>
+                <input type="text" class="form-control" id="Username">
+                <br>
+            </div>
+
+            <div class="mb-3">
+                <label for="Userpassword1" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="Userpassword1">
+            </div>
+            <a href="#"><button type="button" class="btn btn-primary" role="button" id="Loginbutton">Login</button></a>
+            <h4 class="text-center" id="BottomOfLogin">Don't have an account?<span><a href="../SignUp_Folder/SignUp.html"> SignUp here</a></span></h4>
+            <h4 class="text-center" id="DontHaveLine2"><span><a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password</a></span></h4>
+        </form>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Enter your email to receive a password.</p>
+                    <input type="email" id="EmailforForgot" class="form-control" placeholder="Enter your email" required>
+                    <p>Enter your nickname.</p>
+                    <input type="text" id="nicknameforForgot" class="form-control" placeholder="Enter your nickname" required>    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="forgotPasswordModalCancelButton">Close</button>
+                    <button type="button" class="btn btn-primary" id="sendEmailforForgot">Send Email</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="(1)Login.js"></script>
+    <script src="(3)ForgetPassword.js"></script>
+    <!-- <script src="NewLogin.js"></script> -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

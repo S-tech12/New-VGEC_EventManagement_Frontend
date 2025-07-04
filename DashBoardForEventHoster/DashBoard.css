@@ -1,0 +1,53 @@
+body {
+    height: 100vh;
+    overflow: auto;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.container {
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    box-shadow: 2px 4px 20px black;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#EventTable {
+    width: 100%;
+    table-layout: fixed; /* Evenly divides columns */
+    border-collapse: collapse;
+}
+
+/* Optional: better spacing inside each cell */
+#EventTable th,
+#EventTable td {
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+/* Align Delete button properly inside cell */
+#EventTable .btn-danger {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+}
+
+/* this red mark is for the form required field */
+.required-mark {
+    color: red;
+    font-weight: bold;
+    margin-left: 2px;
+}

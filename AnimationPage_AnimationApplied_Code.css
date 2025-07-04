@@ -1,0 +1,31 @@
+#FirstIcon
+{
+    opacity: 0;
+    animation: LeftToRight 2s forwards;
+    animation-delay: 1s;
+    font-size: 60px;
+}
+
+#SecondIcon
+{
+    opacity: 0;
+    animation: RightToLeft 2s forwards;
+    animation-delay: 1s;
+    font-size: 60px;
+}
+
+.texts h1{
+    opacity: 0;
+    animation: DownToUp 2s forwards;
+    animation-delay: 1.5s;
+}
+
+.texts p{
+    opacity: 0;
+    animation: DownToUp 2s forwards;
+    animation-delay: 2s;
+}
+
+.remove{
+    animation: remove 1s forwards;
+}

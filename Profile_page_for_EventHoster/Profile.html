@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="Profile.css">
+    <link rel="stylesheet" href="ProfileResponsivness.css">
+
+    <!-- this is the script which provides the modern alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <title>Profile page for Event Hoster</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" id="ProfileNavbar">
+        <div class="container-fluid">
+            <a class="navbar-brand h1" href="#" style="font-size: xx-large;">VGEC Fest Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- this div is just for showing that you have not entered contact number or branch -->
+    <div id="ProfileWarning" class="alert alert-danger" role="alert"></div>
+    <div id="ProfileSuccess" class="alert alert-success" role="alert"></div>
+
+    <div class="container">
+        <div class="card mb-3" id="UserBox">
+            <div class="row g-0">
+                <div class="col-md-4" id="imageOfUser">
+                    <img src="../Profile_Picture/user_Profile.jpg" alt="User Profile Page" data-bs-toggle="modal"
+                        data-bs-target="#ImageOfUserModal" role="button" id="userImage">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title" id="Username">User Name</h5>
+                        <p class="card-text" id="UserData"></p>
+                        <p class="card-text"><small class="text-muted" id="UsercreatedDate"></small></p>
+                        <p class="card-text"><small class="text-muted" id="UserupdatedDate"></small></p>
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                            data-bs-target="#logoutModal">
+                            Log Out
+                        </button>
+                        <a href="../DashBoardForEventHoster/DashBoard.html"><button type="button"
+                                class="btn btn-primary">Back</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Pending Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Pending Events</h4>
+                <p class="card-text" id="NoOfEvent0"></p>
+                <table class="table table-striped" id="PendingTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" style="display: flex; justify-content:space-evenly;">
+                                Date
+                                <div id="emailHelp" class="form-text">YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Status</th>
+                            <th scope="col">HOD's E-mail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Approved Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Approved Events</h4>
+                <p class="card-text" id="NoOfEvent1"></p>
+                <table class="table table-striped" id="ApprovedTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" style="display: flex; justify-content:space-evenly;">
+                                Date
+                                <div id="emailHelp" class="form-text">YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Event Participation File</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Rejected Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Rejected Events</h4>
+                <p class="card-text" id="NoOfEvent2"></p>
+                <table class="table table-striped" id="RejectedTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Faculty</th>
+                            <th scope="col" style="display: flex; justify-content:space-evenly;">
+                                Date
+                                <div id="emailHelp" class="form-text"> YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Done Events Section for Admin -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Done Events</h4>
+                <p class="card-text" id="NoOfEvent3"></p>
+                <table class="table table-striped" id="DoneTableBody">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Faculty</th>
+                            <th scope="col" style="display: flex; justify-content:space-evenly;">
+                                Date
+                                <div id="emailHelp" class="form-text"> YYYY-MM-DD</div>
+                            </th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Instructions Section for Event Hosts -->
+        <div class="card mb-3" id="UserBox">
+            <div class="card-body">
+                <h4 class="card-title">Instructions for Event Organizers</h4>
+                <p class="card-text">Welcome! Please read these instructions carefully before proceeding.</p>
+                <ul>
+                    <li>Submit your event proposal at least <strong>15 days before</strong> the event date.</li>
+                    <li>Ensure all event details (title, date, venue, description, fees, etc.) are <strong>accurate and complete</strong>.</li>
+                    <li><strong>Once submitted</strong>, events cannot be edited. Verify all details before submitting.</li>
+                    <li>Your event will go through an approval process. Track its status (Pending, Approved, Rejected) in your dashboard.</li>
+                    <li>You’ll receive an <strong>email notification</strong> once your event is approved or rejected.</li>
+                    <li><strong>If rejected</strong>, you may resubmit a corrected version (if time permits).</li>
+                    <li>If an <strong>event is approved and not completed</strong>, you <strong>cannot delete</strong> it or your account.</li>
+                    <li>If the HOD deletes their account while your event is still <strong>Pending</strong>, the event will be deleted and you’ll be <strong>notified via email</strong>.</li>
+                    <li>If any issue arises during the event and the responsible student deletes their account, the <strong>participant file will act as proof</strong>. Maintain it responsibly.</li>
+                    <li>You can only <strong>Add</strong> and <strong>Delete</strong> events. <strong>Editing</strong> or <strong>Approval</strong> rights are not permitted.</li>
+                    <li>If the event is marked as <strong>Paid</strong>:
+                        <ul>
+                            <li>Students must pay online via <strong>Razorpay</strong> during enrollment.</li>
+                            <li>Receipts will be auto-generated and sent via email.</li>
+                            <li>Once payment is successful, the student is marked as <strong>Paid & Enrolled</strong>.</li>
+                        </ul>
+                    </li>
+                    <li>If the event is marked as <strong>Free</strong>, students can directly enroll without payment.</li>
+                    <li>Students can enroll <strong>before the event day</strong>; enrollment is <strong>disabled on the event day</strong>.</li>
+                    <li>As an organizer, you can <strong>download participant lists</strong> anytime from your <strong>Profile Page</strong>.</li>
+                    <li>Certificates are auto-generated for enrolled students after event completion. A <strong>sample is available</strong>.</li>
+                    <li>Check the <strong>FAQs</strong> below if you have more questions.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Contact Form Section -->
+    <div class="container mb-3">
+        <div id="UserBox">
+            <h4 class="mb-4 text-center">💬  Have a Question? Contact Us</h4>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="QuerySenderMail" class="form-label">Your Email-Id: </label>
+                    <input type="text" class="form-control" id="QuerySenderMail" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="QuerySubject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="QuerySubject" placeholder="Enter your subject" required>
+                </div>
+                <div class="mb-3">
+                    <label for="QueryMessage" class="form-label">Message</label>
+                    <textarea class="form-control" id="QueryMessage" rows="5" placeholder="Type your message here..."
+                        required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="button" class="btn btn-primary" id="QueryButton">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <footer class="bg-dark text-light py-3">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-6">
+                    <h5>About VGEC Fest Portal</h5>
+                    <p>Your one-stop destination for all college events at VGEC. Stay updated with academic, cultural,
+                        technical, sports, and fun activities.</p>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-md-6">
+                    <h5>Contact Us</h5>
+                    <p>Email: VGECTechFest@vgecfest.com </p>
+                    <p>Phone: +91 12345 67890</p>
+                    <p>Location: VGEC, Ahmedabad, India</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/14kzJBuoms/" class="text-light me-3" target="_blank"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/smit_pipalva_2004?igsh=ZGg2Nnh2NjRvZ2Fo"
+                            class="text-light me-3" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://github.com/S-tech12" class="text-light" target="_blank"><i
+                                class="bi bi-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-2">
+                <p class="mb-0">&copy; 2025 VGEC Fest Portal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Host Event Modal -->
+    <div class="modal fade" id="hostEventModal" tabindex="-1" aria-labelledby="hostEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hostEventModalLabel">Host a New Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="hostEventForm">
+                        <div class="mb-3">
+                            <label for="eventName" class="form-label">Event Name</label>
+                            <input type="text" class="form-control" id="eventName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="organizerEmail" class="form-label">Organizer Email</label>
+                            <input type="email" class="form-control" id="organizerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="enrollment" class="form-label">Enrollment Number</label>
+                            <input type="text" class="form-control" id="enrollment" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactNumber" class="form-label">Contact Number</label>
+                            <input type="tel" class="form-control" id="contactNumber" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDuration" class="form-label">Event Duration</label>
+                            <input type="text" class="form-control" id="eventDuration" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="branch" class="form-label">Branch</label>
+                            <select class="form-control" id="branch" required>
+                                <option value="">Select Branch</option>
+                                <option value="IT">Information Technology</option>
+                                <option value="CSE">Computer Science</option>
+                                <option value="ECE">Electronics & Communication</option>
+                                <option value="ME">Mechanical</option>
+                                <option value="EE">Electrical</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventType" class="form-label">Event Type</label>
+                            <select class="form-control" id="eventType" required>
+                                <option value="">Select Type</option>
+                                <option value="Technical">Technical</option>
+                                <option value="Cultural">Cultural</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Social">Social & Awareness</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Event Fees</label>
+                            <select class="form-control" id="eventFees" required>
+                                <option value="Free">Non-Paid</option>
+                                <option value="Paid">Paid</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDescription" class="form-label">Event Description</label>
+                            <textarea class="form-control" id="eventDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Branch Selection</label><br>
+                            <input type="checkbox" id="itBranch" value="IT"> IT
+                            <input type="checkbox" id="cseBranch" value="CSE"> CSE
+                            <input type="checkbox" id="eceBranch" value="ECE"> ECE
+                            <input type="checkbox" id="meBranch" value="ME"> ME
+                            <input type="checkbox" id="eeBranch" value="EE"> EE
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Gender Selection</label><br>
+                            <input type="radio" name="gender" value="Male"> Male
+                            <input type="radio" name="gender" value="Female"> Female
+                            <input type="radio" name="gender" value="Both"> Both
+                        </div>
+                        <div class="mb-3">
+                            <label for="eventDate" class="form-label">Event Date</label>
+                            <input type="date" class="form-control" id="eventDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hodEmail" class="form-label">Required HOD’s Permission Email</label>
+                            <input type="email" class="form-control" id="hodEmail" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Request Hosting</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileLabel">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        id="closeModalButton"></button>
+                </div>
+
+                <!-- Modal Body (Form) -->
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="editFullName" class="form-label">Full Name:</label>
+                            <input type="text" class="form-control" id="editFullName"
+                                placeholder="Enter your full name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email address:</label>
+                            <input type="email" class="form-control" id="editEmail" placeholder="Enter your email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editUsername" class="form-label">Username:</label>
+                            <input type="text" class="form-control" id="editUsername" placeholder="Enter your username">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editPassword" class="form-label">New Password:</label>
+                            <input type="password" class="form-control" id="editPassword"
+                                placeholder="Enter new password">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmEditPassword" class="form-label">Confirm Password:</label>
+                            <input type="password" class="form-control" id="confirmEditPassword"
+                                placeholder="Confirm new password">
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="SaveChangesButton">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Delete Account Modal -->
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteAccountLabel">Delete Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>Are you sure you want to delete your account?</p>
+                    <p class="text-danger"><small>This action cannot be undone.</small></p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="deleteAccountButton">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log Out Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutLabel">Log Out</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>Are you sure you want to log out?</p>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="LogoutModalCloseButton">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="LogoutButton">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- update profile image Modal -->
+    <div class="modal fade" id="ImageOfUserModal" tabindex="-1" aria-labelledby="logoutLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="Update Profile Image">Update the Profile Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="UpdateImageModalCloseButton"></button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="UpdateImageBox">
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="UpdateImageButton">Update Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Profile Contact Number and Branch Modal -->
+    <div class="modal fade" id="updateProfileModal" tabindex="-1" aria-labelledby="updateProfileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateProfileModalLabel">Update Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your profile update form here -->
+                    <form id="updateProfileForm">
+                        <div class="mb-3">
+                            <label for="Usercontactno" class="form-label">Contact Number</label>
+                            <input type="text" class="form-control" id="Usercontactno">
+                            <div id="emailHelp" class="form-text">Once You Add this later on it can't be change so fill
+                                this wisely.</div>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="Userbranch" class="form-label">Branch</label>
+                            <select class="form-select" id="Userbranch">
+                                <option value="#">Select branch</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Computer Science and Engineering">Computer Science and Engineering
+                                </option>
+                                <option value="Electronics and Communication">Electronics and Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                            </select>
+                            <div id="emailHelp" class="form-text">Once You Add this later on it can't be change so
+                                choose this wisely.</div>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="Usernickname" class="form-label">Nickname</label>
+                            <input type="text" class="form-control" id="Usernickname">
+                            <div id="emailHelp" class="form-text">Once You Add this later on , it can't be change so
+                                fill this wisely.</div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        id="closeButtonOfInformationModal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="UpdateDataButton">Add Information</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="(1)ProfileForEventHoster.js"></script>
+    <script src="(2)Logout.js"></script>
+    <script src="(3)ApprovedEvent.js"></script>
+    <script src="(4)RejectedEvent.js"></script>
+    <script src="(5)PendingEvent.js"></script>
+    <script src="(6)DoneEvent.js"></script>
+    <script src="(7)Query.js"></script>
+    <script src="(8)ProfilePicture.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

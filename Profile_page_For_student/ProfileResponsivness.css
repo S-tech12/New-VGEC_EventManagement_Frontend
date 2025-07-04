@@ -1,0 +1,178 @@
+/* ===== GENERAL RESET ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ===== NAVBAR ===== */
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* ===== PROFILE CARD ===== */
+#userImage {
+    width: 100%;
+    max-width: 220px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ===== TABLES ===== */
+table.table {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px;
+    word-break: break-word;
+}
+
+/* Scroll table on small screens */
+@media (max-width: 768px) {
+    table.table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* ===== FORM FIELDS ===== */
+.form-control,
+.form-select {
+    font-size: 1rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #212529;
+    color: white;
+}
+
+footer h5 {
+    font-size: 1.2rem;
+}
+
+footer p,
+footer a {
+    font-size: 0.95rem;
+}
+
+.social-icons i {
+    font-size: 1.2rem;
+}
+
+/* ===== MODAL ===== */
+.modal-content {
+    border-radius: 12px;
+}
+
+.modal-footer .btn {
+    min-width: 100px;
+}
+
+/* ===== MEDIA QUERIES FOR RESPONSIVENESS ===== */
+
+/* Medium Devices (768px to 991px) */
+@media screen and (max-width: 991px) {
+    .navbar-brand {
+        font-size: 1.6rem;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+
+    .form-label,
+    .form-text {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Small Devices (576px to 767px) */
+@media screen and (max-width: 767px) {
+    .navbar-brand {
+        font-size: 1.4rem;
+    }
+
+    .card-title {
+        font-size: 1.15rem;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 0.9rem;
+    }
+
+    .modal-footer .btn {
+        width: 48%;
+    }
+
+    footer h5 {
+        font-size: 1rem;
+    }
+
+    footer p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Extra Small Devices (≤375px) */
+@media screen and (max-width: 375px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .form-label,
+    .form-text,
+    .btn {
+        font-size: 0.85rem;
+    }
+
+    .modal-footer .btn {
+        font-size: 0.85rem;
+    }
+}
