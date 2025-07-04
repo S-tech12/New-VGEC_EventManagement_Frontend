@@ -16,7 +16,7 @@ async function GetAndStore(){
     }
 
     try {
-        const response = await fetch("http://localhost:3000/getUserProfile", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/getUserProfile", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
