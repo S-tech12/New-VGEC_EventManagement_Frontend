@@ -39,7 +39,7 @@ QueryButton.addEventListener("click", async (e) => {
 
 
     try {
-        const response = await fetch("http://localhost:3000/QueryrouteForHOD", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/QueryrouteForHOD", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
