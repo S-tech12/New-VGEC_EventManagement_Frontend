@@ -18,7 +18,7 @@ async function FillTable() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/getEventData", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/getEventData", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ async function FillTable() {
                         <td>${event.Event_type}</td>
                         <td>${new Date(event.Event_date).toISOString().split('T')[0]}</td>
                         <td>
-                            <a href="http://localhost:3000/generate-pdf/${event._id}"class="btn btn-primary"><i
+                            <a href="https://new-vgec-eventmanagement-backend.onrender.com/generate-pdf/${event._id}"class="btn btn-primary"><i
                                         class="bi bi-filetype-pdf"></i> Download</a>
                         </td>
                         <td>
