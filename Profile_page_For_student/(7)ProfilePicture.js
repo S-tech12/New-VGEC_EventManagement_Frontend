@@ -27,7 +27,7 @@ document.getElementById("UpdateImageButton").addEventListener("click", async fun
     formData.append("profileImage", file);
 
     try {
-        const response = await fetch("http://localhost:3000/upload-profile-image", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/upload-profile-image", {
             method: "PUT",
             headers: {
                 "Authorization": "Bearer " + token
