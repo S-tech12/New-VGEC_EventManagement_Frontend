@@ -18,7 +18,7 @@ async function FillTable() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/DoneEventsForHodProfile", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/DoneEventsForHodProfile", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json" ,
@@ -48,7 +48,7 @@ async function FillTable() {
                             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#eventDetailModal" onclick='showDetails(${JSON.stringify(event)})'>
                                 <i class="bi bi-eye"></i> View Details
                             </button>
-                            <a href="http://localhost:3000/generate-pdf/${event._id}"class="btn btn-primary"><i
+                            <a href="https://new-vgec-eventmanagement-backend.onrender.com/generate-pdf/${event._id}"class="btn btn-primary"><i
                                         class="bi bi-filetype-pdf"></i> Download Participant Detail</a>
                         </td>
                         <td>
