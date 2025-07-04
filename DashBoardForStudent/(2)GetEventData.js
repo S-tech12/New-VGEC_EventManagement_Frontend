@@ -29,7 +29,7 @@ async function GetEvents() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/getAllEventDataForParticipate", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/getAllEventDataForParticipate", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
@@ -161,7 +161,7 @@ async function showDetails(event) {
                 const UserData = await getUserData();  // ⬅️ already have this
 
                 // ✅ PRE-CHECK BEFORE PAYMENT
-                const enrollmentCheck = await fetch("http://localhost:3000/check-enrollment", {
+                const enrollmentCheck = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/check-enrollment", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -179,7 +179,7 @@ async function showDetails(event) {
 
                 // ✅ User not enrolled → proceed to payment
                 
-                const orderResponse = await fetch("http://localhost:3000/create-order", {
+                const orderResponse = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/create-order", {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ amount: event.Event_feesPerPerson }) // e.x., : ₹100
@@ -200,7 +200,7 @@ async function showDetails(event) {
 
 
                         // 2. Mark as Paid in DB
-                        const markPaidResponse = await fetch("http://localhost:3000/mark-paid", {
+                        const markPaidResponse = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/mark-paid", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
@@ -266,7 +266,7 @@ async function showDetails(event) {
 
 async function getUserData() {
     try {
-        const response = await fetch("http://localhost:3000/getUserProfile", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/getUserProfile", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
@@ -307,7 +307,7 @@ async function getUserData() {
 
 // async function EnrollProcess(event, UserData) {
 //     try {
-//         const response = await fetch("http://localhost:3000/ParticipateStudent", {
+//         const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/ParticipateStudent", {
 //             method: "POST",
 //             headers: {
 //                 "Authorization": "Bearer " + token,
@@ -370,7 +370,7 @@ async function getUserData() {
 
 async function EnrollProcess(event, UserData,transactionId) {
     try {
-        const response = await fetch("http://localhost:3000/ParticipateStudent", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/ParticipateStudent", {
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + token,
