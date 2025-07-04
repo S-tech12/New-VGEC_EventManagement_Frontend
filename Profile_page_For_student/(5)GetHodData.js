@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
     try {
-        const response = await fetch('http://localhost:3000/getHodEmails',{
+        const response = await fetch('https://new-vgec-eventmanagement-backend.onrender.com/getHodEmails',{
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
