@@ -215,7 +215,7 @@ async function AddEvent(e) {
 
 
     try {
-        const response = await fetch("http://localhost:3000/AddEvent", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/AddEvent", {
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + token
