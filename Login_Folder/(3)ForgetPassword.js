@@ -37,7 +37,7 @@ async function sentEmail() {
 
     if (nicknameforForgot.length >= 4) {
         try {
-            const response = await fetch("http://localhost:3000/SentPasswordRoute", {
+            const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/SentPasswordRoute", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ EmailforForgot, nicknameforForgot })
