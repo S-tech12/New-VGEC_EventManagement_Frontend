@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function getData() {
     try {
-        const response = await fetch("https://vgec-eventmanagement-backend.onrender.com/EventForHODDashboardTable", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/EventForHODDashboardTable", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -175,7 +175,7 @@ async function ApproveEvent(event) {
         });
 
         try {
-            const response = await fetch("https://vgec-eventmanagement-backend.onrender.com/Reject-Event", {
+            const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/Reject-Event", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -234,7 +234,7 @@ async function ApproveEvent(event) {
     }
 
     try {
-        const response = await fetch("https://vgec-eventmanagement-backend.onrender.com/Approve-Event", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/Approve-Event", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -292,7 +292,7 @@ async function RejectEvent(event) {
     }
 
     try {
-        const response = await fetch("https://vgec-eventmanagement-backend.onrender.com/Reject-Event", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/Reject-Event", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
