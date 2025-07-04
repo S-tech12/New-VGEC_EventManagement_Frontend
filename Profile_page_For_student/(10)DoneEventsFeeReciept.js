@@ -18,7 +18,7 @@ async function FillTable() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/PaidAndDoneEventsDataForStudentProfile", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/PaidAndDoneEventsDataForStudentProfile", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -69,7 +69,7 @@ async function FillTable() {
                         <td>${new Date(event.eventDate).toISOString().split('T')[0]}</td>
                         <td>₹${event.feesPerPerson}</td>
                         <td>
-                            <a href="http://localhost:3000/downloadFeeReciept/${event._id}?userId=${userId}"class="btn btn-primary"><i class="bi bi-filetype-pdf"></i> Fee Reciept</a>
+                            <a href="https://new-vgec-eventmanagement-backend.onrender.com/downloadFeeReciept/${event._id}?userId=${userId}"class="btn btn-primary"><i class="bi bi-filetype-pdf"></i> Fee Reciept</a>
                         </td>    
                 `;
                     doneEventsTableBody.appendChild(row);
