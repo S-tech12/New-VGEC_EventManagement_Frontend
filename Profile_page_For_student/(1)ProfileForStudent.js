@@ -17,7 +17,7 @@ async function showData() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/getUserProfile", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/getUserProfile", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token
@@ -176,7 +176,7 @@ async function addInfo() {
     }
 
     try {
-        const response = await fetch("http://localhost:3000/addInfo", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/addInfo", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
