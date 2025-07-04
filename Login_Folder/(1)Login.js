@@ -40,7 +40,7 @@ Loginbutton.addEventListener("click", async (e) => {
 
     try {
         // Send a POST request to the Signuproute route
-        const response = await fetch("http://localhost:3000/Loginroute", {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/Loginroute", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
