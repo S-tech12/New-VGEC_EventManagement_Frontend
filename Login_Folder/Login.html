@@ -47,7 +47,12 @@
                 <label for="Userpassword1" class="form-label">Password:</label>
                 <input type="password" class="form-control" id="Userpassword1">
             </div>
-            <a href="#"><button type="button" class="btn btn-primary" role="button" id="Loginbutton">Login</button></a>
+            <a href="#">
+              <button type="button" class="btn btn-primary" role="button" id="Loginbutton">
+                <span class="spinner-border spinner-border-sm d-none" id="LoginSpinner" role="status" aria-hidden="true"></span>
+                <span id="LoginButtonText">Login</span>
+              </button>
+            </a>
             <h4 class="text-center" id="BottomOfLogin">Don't have an account?<span><a href="../SignUp_Folder/SignUp.html"> SignUp here</a></span></h4>
             <h4 class="text-center" id="DontHaveLine2"><span><a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password</a></span></h4>
         </form>
@@ -70,7 +75,11 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="forgotPasswordModalCancelButton">Close</button>
-                    <button type="button" class="btn btn-primary" id="sendEmailforForgot">Send Email</button>
+                    <button type="button" class="btn btn-primary" id="sendEmailforForgot">
+                      <span class="spinner-border spinner-border-sm d-none" id="ForgotSpinner" role="status" aria-hidden="true"></span>
+                      <span id="ForgotButtonText">Send Email</span>
+                    </button>
+
                 </div>
             </div>
         </div>
