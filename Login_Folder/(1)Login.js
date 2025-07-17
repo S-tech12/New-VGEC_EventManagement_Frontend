@@ -1,62 +1,59 @@
-// Attach an event listener to the login button
 const Loginbutton = document.getElementById("Loginbutton");
+const LoginSpinner = document.getElementById("LoginSpinner");
+const LoginButtonText = document.getElementById("LoginButtonText");
 
 Loginbutton.addEventListener("click", async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
-    // Get the username and password values from the input fields
     const Username = document.getElementById("Username").value.trim();
     const Userpassword1 = document.getElementById("Userpassword1").value.trim();
-
-
-    // ✅ Get the selected role
     const Userrole = document.getElementById("Userrole").value;
+
+    // Show spinner and disable button
+    Loginbutton.disabled = true;
+    LoginSpinner.classList.remove("d-none");
+    LoginButtonText.textContent = "Logging in...";
 
     if (Userrole === "#") {
         iziToast.warning({
             title: 'Missing Fields',
             message: 'Please choose the role!',
-            position: 'topRight', // You can change this (e.g., topCenter, bottomRight, etc.)
-            timeout: 2000,        // Auto-hide after 4 seconds
-            close: true,          // Show close (X) button
-            color: 'yellow',      // Optional: custom color (default yellow for warning)
-            progressBar: true,    // Optional: progress bar
+            position: 'topRight',
+            timeout: 2000,
+            close: true,
+            progressBar: true,
         });
+        resetLoginButton();
         return;
     }
 
-    // Check if fields are empty
     if (!Username || !Userpassword1) {
         iziToast.warning({
             title: 'Missing Fields',
             message: 'Please fill in every field!',
             position: 'topRight',
-            timeout: 2000, // Keep it until user interacts
-            close: true,   // Hide close (X) button
+            timeout: 2000,
+            close: true,
             progressBar: true,
         });
+        resetLoginButton();
         return;
     }
 
     try {
-        // Send a POST request to the Signuproute route
         const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/Loginroute", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ Username, Userpassword1, Userrole }),
             credentials: "include"
         });
 
-        // Parse the JSON response
         const result = await response.json();
 
         if (response.ok) {
             iziToast.success({
-                title: 'Login Successfully!! 🎉🎉🎉🎊🎊🎊🥳🥳🥳',
-                message: '', // Optional, can be left empty
-                position: 'topCenter', // Or use 'center' for modal-like feel
+                title: 'Login Successfully!! 🎉',
+                position: 'topCenter',
                 timeout: 1500,
                 close: false,
                 progressBar: true,
@@ -67,29 +64,27 @@ Loginbutton.addEventListener("click", async (e) => {
             sessionStorage.setItem("authToken", result.token);
             sessionStorage.setItem("userRole", result.role);
 
-            // Redirect based on role
-            const role = result.role;
-
             setTimeout(() => {
-                if (role === "Student") {
+                if (result.role === "Student") {
                     window.location.href = "../DashBoardForStudent/DashBoard.html";
-                } else if (role === "HOD") {
+                } else if (result.role === "HOD") {
                     window.location.href = "../DashBoardForHOD/DashBoard.html";
-                } else if (role === "Event Hoster") {
+                } else if (result.role === "Event Hoster") {
                     window.location.href = "../DashBoardForEventHoster/DashBoard.html";
                 } else {
                     alert("Unknown role. Cannot redirect.");
+                    resetLoginButton();
                 }
-            }, 2000)
+            }, 2000);
         } else {
-            // login failed
             iziToast.error({
                 title: 'Error',
                 message: result.message,
-                position: 'topRight',           // Centered like SweetAlert
-                timeout: 2000,               // Keeps the alert until user clicks OK
+                position: 'topRight',
+                timeout: 2000,
                 close: false,
             });
+            resetLoginButton();
         }
     } catch (err) {
         console.error("Error Login:", err);
@@ -99,12 +94,14 @@ Loginbutton.addEventListener("click", async (e) => {
             position: 'center',
             timeout: 2000,
             close: false,
-            buttons: [
-                ['<button>OK</button>', function (instance, toast) {
-                    instance.hide({ transitionOut: 'fadeOut' }, toast, 'button');
-                    // Optional: Add any logic after OK is clicked
-                }]
-            ]
         });
+        resetLoginButton();
     }
 });
+
+// Reset function to re-enable the button
+function resetLoginButton() {
+    Loginbutton.disabled = false;
+    LoginSpinner.classList.add("d-none");
+    LoginButtonText.textContent = "Login";
+}
