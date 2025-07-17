@@ -1,11 +1,12 @@
 const sendEmailforForgot = document.getElementById("sendEmailforForgot");
+const forgotSpinner = document.getElementById("ForgotSpinner");
+const forgotButtonText = document.getElementById("ForgotButtonText");
 
 sendEmailforForgot.addEventListener("click", sentEmail);
 
 async function sentEmail() {
 
     const allowedDomain = "@vgecg.ac.in";
-
     const EmailforForgot = document.getElementById("EmailforForgot").value.trim();
     const nicknameforForgot = document.getElementById("nicknameforForgot").value.trim();
 
@@ -35,54 +36,63 @@ async function sentEmail() {
         return;
     }
 
-    if (nicknameforForgot.length >= 4) {
-        try {
-            const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/SentPasswordRoute", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ EmailforForgot, nicknameforForgot })
-            });
+    // Show spinner and disable button
+    forgotSpinner.classList.remove("d-none");
+    forgotButtonText.textContent = "Sending...";
+    sendEmailforForgot.disabled = true;
 
-            const result = await response.json();
+    try {
+        const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/SentPasswordRoute", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ EmailforForgot, nicknameforForgot })
+        });
 
-            document.getElementById("forgotPasswordModalCancelButton").click();
+        const result = await response.json();
 
-            if (response.ok) {
-                iziToast.success({
-                    title: 'Success',
-                    message: `Password sent successfully to ${EmailforForgot}!`,
-                    position: 'topRight',
-                    timeout: 3000,
-                    close: true,
-                    progressBar: true
-                });
-                setTimeout(()=>{
-                    location.reload();
-                },3500);
-            } else {
-                iziToast.error({
-                    title: 'Error',
-                    message: result.message || 'An unknown error occurred!',
-                    position: 'topRight',
-                    timeout: 4000,
-                    close: true,
-                    progressBar: true
-                });
-                setTimeout(()=>{
-                    location.reload();
-                },4500);
-            }
+        document.getElementById("forgotPasswordModalCancelButton").click();
 
-        } catch (err) {
-            console.error("Error:", err);
-            iziToast.error({
-                title: 'Server Error',
-                message: 'Server is not working. Please try again later.',
+        if (response.ok) {
+            iziToast.success({
+                title: 'Success',
+                message: `Password sent successfully to ${EmailforForgot}!`,
                 position: 'topRight',
                 timeout: 3000,
                 close: true,
                 progressBar: true
             });
+            setTimeout(() => {
+                location.reload();
+            }, 3500);
+        } else {
+            iziToast.error({
+                title: 'Error',
+                message: result.message || 'An unknown error occurred!',
+                position: 'topRight',
+                timeout: 4000,
+                close: true,
+                progressBar: true
+            });
+            setTimeout(() => {
+                location.reload();
+            }, 4500);
         }
+
+    } catch (err) {
+        console.error("Error:", err);
+        iziToast.error({
+            title: 'Server Error',
+            message: 'Server is not working. Please try again later.',
+            position: 'topRight',
+            timeout: 3000,
+            close: true,
+            progressBar: true
+        });
+
+    } finally {
+        // Hide spinner and re-enable button
+        forgotSpinner.classList.add("d-none");
+        forgotButtonText.textContent = "Send Email";
+        sendEmailforForgot.disabled = false;
     }
 }
