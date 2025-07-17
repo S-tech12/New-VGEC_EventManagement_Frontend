@@ -1,15 +1,14 @@
 const QueryButton = document.getElementById("QueryButton");
+const QuerySpinner = document.getElementById("QuerySpinner");
+const QueryButtonText = document.getElementById("QueryButtonText");
 
 QueryButton.addEventListener("click", async (e) => {
-    e.preventDefault(); // Prevent default form submission
-
+    e.preventDefault();
 
     const QuerySubject = document.getElementById("QuerySubject").value.trim();
     const QueryMessage = document.getElementById("QueryMessage").value.trim();
     const QuerySenderMail = document.getElementById("QuerySenderMail").value.trim();
 
-
-    // Check if fields are empty
     if (!QuerySubject || !QueryMessage || !QuerySenderMail) {
         Swal.fire({
             icon: 'warning',
@@ -25,18 +24,21 @@ QueryButton.addEventListener("click", async (e) => {
     }
 
     const allowedDomain = "@vgecg.ac.in";
-
     if (!QuerySenderMail.endsWith(allowedDomain)) {
         Swal.fire({
             icon: 'error',
             title: 'Incorrect Data',
-            text: 'This Website is just useful for the VGEC Student Enter Your College id!!',
+            text: 'This Website is just useful for the VGEC Student. Enter your college ID!',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
         return;
     }
 
+    // Spinner show + disable button
+    QueryButton.disabled = true;
+    QuerySpinner.classList.remove("d-none");
+    QueryButtonText.textContent = "Submitting...";
 
     try {
         const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/QueryrouteForStudent", {
@@ -45,7 +47,7 @@ QueryButton.addEventListener("click", async (e) => {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + token
             },
-            body: JSON.stringify({ QueryMessage, QuerySubject , QuerySenderMail}),
+            body: JSON.stringify({ QueryMessage, QuerySubject, QuerySenderMail }),
             credentials: "include"
         });
 
@@ -75,9 +77,9 @@ QueryButton.addEventListener("click", async (e) => {
                 showConfirmButton: false,
                 timer: 3000,
                 timerProgressBar: true
-            }).then(()=>{
+            }).then(() => {
                 location.reload();
-            })
+            });
         } else {
             Swal.fire({
                 icon: 'error',
@@ -98,5 +100,10 @@ QueryButton.addEventListener("click", async (e) => {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+    } finally {
+        // Spinner hide + enable button
+        QuerySpinner.classList.add("d-none");
+        QueryButtonText.textContent = "Submit";
+        QueryButton.disabled = false;
     }
 });
