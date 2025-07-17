@@ -67,10 +67,13 @@ Loginbutton.addEventListener("click", async (e) => {
             setTimeout(() => {
                 if (result.role === "Student") {
                     window.location.href = "../DashBoardForStudent/DashBoard.html";
+                    resetLoginButton();
                 } else if (result.role === "HOD") {
                     window.location.href = "../DashBoardForHOD/DashBoard.html";
+                    resetLoginButton();
                 } else if (result.role === "Event Hoster") {
                     window.location.href = "../DashBoardForEventHoster/DashBoard.html";
+                    resetLoginButton();
                 } else {
                     alert("Unknown role. Cannot redirect.");
                     resetLoginButton();
