@@ -1,15 +1,14 @@
 const QueryButton = document.getElementById("QueryButton");
+const QuerySpinner = document.getElementById("QuerySpinner");
+const QueryBtnText = document.getElementById("QueryBtnText");
 
 QueryButton.addEventListener("click", async (e) => {
-    e.preventDefault(); // Prevent default form submission
-
+    e.preventDefault();
 
     const QuerySubject = document.getElementById("QuerySubject").value.trim();
     const QueryMessage = document.getElementById("QueryMessage").value.trim();
     const QuerySenderMail = document.getElementById("QuerySenderMail").value.trim();
 
-
-    // Check if fields are empty
     if (!QuerySubject || !QueryMessage || !QuerySenderMail) {
         Swal.fire({
             icon: 'warning',
@@ -25,7 +24,6 @@ QueryButton.addEventListener("click", async (e) => {
     }
 
     const allowedDomain = "@vgecg.ac.in";
-
     if (!QuerySenderMail.endsWith(allowedDomain)) {
         Swal.fire({
             icon: 'error',
@@ -37,6 +35,10 @@ QueryButton.addEventListener("click", async (e) => {
         return;
     }
 
+    // ⏳ Show Spinner
+    QueryButton.disabled = true;
+    QuerySpinner.classList.remove("d-none");
+    QueryBtnText.textContent = "Submitting...";
 
     try {
         const response = await fetch("https://new-vgec-eventmanagement-backend.onrender.com/QueryrouteForEvent_hoster", {
@@ -45,7 +47,7 @@ QueryButton.addEventListener("click", async (e) => {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + token
             },
-            body: JSON.stringify({ QueryMessage, QuerySubject , QuerySenderMail}),
+            body: JSON.stringify({ QueryMessage, QuerySubject, QuerySenderMail }),
             credentials: "include"
         });
 
@@ -59,9 +61,7 @@ QueryButton.addEventListener("click", async (e) => {
                 showConfirmButton: false,
                 timer: 3000,
                 timerProgressBar: true
-            }).then(()=>{
-                location.reload();
-            })
+            }).then(() => location.reload());
         } else {
             Swal.fire({
                 icon: 'error',
@@ -82,5 +82,10 @@ QueryButton.addEventListener("click", async (e) => {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+    } finally {
+        // ✅ Hide Spinner after response
+        QueryButton.disabled = false;
+        QuerySpinner.classList.add("d-none");
+        QueryBtnText.textContent = "Submit";
     }
 });
