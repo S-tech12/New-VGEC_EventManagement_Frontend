@@ -225,7 +225,10 @@
                         required></textarea>
                 </div>
                 <div class="d-grid">
-                    <button type="button" class="btn btn-primary" id="QueryButton">Submit</button>
+                    <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center gap-2" id="QueryButton">
+                        <span id="QueryBtnText">Submit</span>
+                        <div id="QuerySpinner" class="spinner-border spinner-border-sm d-none" role="status"></div>
+                    </button>
                 </div>
             </form>
         </div>
