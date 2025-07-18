@@ -2,11 +2,20 @@ const token = sessionStorage.getItem("authToken");
 
 
 const NewEventRequestButton = document.getElementById("NewEventRequestButton");
+const hostSpinner = document.getElementById("hostSpinner");
+const hostButtonText = document.getElementById("hostButtonText");
+
+
 NewEventRequestButton.addEventListener("click", AddEvent);
 
 async function AddEvent(e) {
     e.preventDefault();
 
+    // Show spinner and update text
+    hostSpinner.classList.remove("d-none");
+    hostButtonText.textContent = "Sending...";
+    NewEventRequestButton.disabled = true;
+    
     const Event_name = document.getElementById("eventName").value.trim();
     const Event_hoster_emailid = document.getElementById("organizerEmail").value.trim();
     const Event_hoster_enrollementNo = document.getElementById("enrollment").value.trim();
@@ -45,7 +54,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
     
     const Event_feesPerPerson = document.getElementById("feesPerPerson").value.trim();
@@ -58,7 +67,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });    
-        return;
+        return resetButton();
     }
 
     let PosterPath = ""; // define before the try block
@@ -75,7 +84,7 @@ async function AddEvent(e) {
 
         if (!result.isConfirmed) {
             console.log("User canceled.");
-            return; // Now this will properly exit the AddEvent function
+            return resetButton(); // Now this will properly exit the AddEvent function
         } else {
             console.log("User chose to continue.");
         }
@@ -89,7 +98,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     if (Event_hoster_ContactNo.length != 10) {
@@ -100,7 +109,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     if (Event_description.length <= 20) {
@@ -111,7 +120,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     const Currentdate = new Date();
@@ -125,7 +134,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     let timeDiff = EventDateObj - Currentdate;
@@ -138,7 +147,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     // from this the time's validation has been strated
@@ -162,7 +171,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     // [2] Check if both times are between 07:00 and 20:00
@@ -174,7 +183,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     // [3] Check if duration is at least 1 hour
@@ -187,7 +196,7 @@ async function AddEvent(e) {
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK'
         });
-        return;
+        return resetButton();
     }
 
     const formData = new FormData();
@@ -233,7 +242,7 @@ async function AddEvent(e) {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'OK'
             });
-            return;
+            return resetButton();
         } else {
             // this will remove the modal when the event has been successfully added!!
             const HostNewEventCloseButton = document.getElementById("HostNewEventCloseButton");
@@ -271,4 +280,11 @@ async function AddEvent(e) {
             confirmButtonText: 'OK'
         });
     }
+}
+
+// Helper: Reset spinner and button state
+function resetButton() {
+    hostSpinner.classList.add("d-none");
+    hostButtonText.textContent = "Request Hosting";
+    NewEventRequestButton.disabled = false;
 }
