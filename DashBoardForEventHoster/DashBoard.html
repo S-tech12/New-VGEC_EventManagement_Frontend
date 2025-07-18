@@ -211,8 +211,10 @@
                             </select>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" id="NewEventRequestButton">Request
-                                Hosting</button>
+                            <button type="submit" class="btn btn-primary" id="NewEventRequestButton">
+                              <span class="spinner-border spinner-border-sm d-none" id="hostSpinner" role="status" aria-hidden="true"></span>
+                              <span id="hostButtonText">Request Hosting</span>
+                            </button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                 id="HostNewEventCloseButton">Close</button>
                         </div>
