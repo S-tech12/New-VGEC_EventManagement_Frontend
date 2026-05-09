@@ -188,7 +188,7 @@ async function showDetails(event) {
                 const orderData = await orderResponse.json();
 
                 const options = {
-                    key: 'rzp_test_FoIHGuTuf6DyTj', // public key only
+                    key: 'rzp_test_Sdk39f0Mj7WsI2', // public key only
                     amount: orderData.amount,
                     currency: orderData.currency,
                     name: "Vishwakarma Government Engineering College",
